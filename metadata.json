@@ -1,0 +1,6 @@
+{
+  "name": "India Localities Extractor",
+  "description": "Extract comprehensive locality data for Indian districts using Overpass API.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
