@@ -15,7 +15,8 @@ const PORT = 1212;
 app.use(express.json());
 
 // Initialize SQLite Database
-const dbPath = path.join(process.cwd(), 'database.sqlite');
+const isVercel = process.env.VERCEL || process.env.VERCEL_ENV;
+const dbPath = isVercel ? path.join('/tmp', 'database.sqlite') : path.join(process.cwd(), 'database.sqlite');
 const db = new Database(dbPath);
 
 // Create tables
@@ -254,4 +255,8 @@ async function startServer() {
   });
 }
 
-startServer();
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  startServer();
+}
+
+export default app;
